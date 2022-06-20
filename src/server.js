@@ -6,6 +6,7 @@ const data = require(file);
 
 let app = express();
 app.use(express.json());
+
 // Code here
 
 const port = 8000;
@@ -56,11 +57,12 @@ app.post('/users', async (req, res) => {
     fs.writeFile(
       __dirname + '/assets/user.json',
       JSON.stringify(data),
-      function writeJSON(err) {
-        if (err) return console.log(err);
-        res.send(data[data.length - 1]);
-
-        console.log('writing to ' + file);
+      function writeJSON(error) {
+        if (error) {
+          return console.log(error);
+        } else {
+          res.send(data[data.length - 1]);
+        }
       }
     );
   } catch (error) {
