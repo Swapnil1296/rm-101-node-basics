@@ -1,8 +1,8 @@
 // install and import express
 const express = require('express');
 var fs = require('fs');
-const file = './assets/user.json';
-const data = require(file);
+
+const data = './assets/user.json';
 
 let app = express();
 app.use(express.json());
@@ -13,7 +13,7 @@ const port = 8000;
 
 app.get('/', async (req, res) => {
   try {
-    fs.readFile(__dirname + '/assets/users.html', 'utf8', function (err, text) {
+    fs.readFile(__dirname + '/assets/users.html', 'utf8', function (error, text) {
       if (error) {
         return res.send(error);
       }
